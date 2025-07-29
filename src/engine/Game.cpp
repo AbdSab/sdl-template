@@ -2,7 +2,7 @@
 #include <SDL2/SDL_events.h>
 #include "engine/input.h"
 #include "engine/renderer.h"
-#include "Scene.h"
+#include "BaseScene.h"
 
 void GameStart() {
     bool running = true;
