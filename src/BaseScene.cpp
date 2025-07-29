@@ -3,13 +3,13 @@
 #include "engine/input.h"
 #include "engine/renderer.h"
 #include <common.h>
-#include <scenes/MainMenu.h>
+#include <scenes/GameScene.h>
 
 
 void Init() {
     Fonts_Init("pixel.ttf");
     Textures_Init();
-    Scene_Set(&MainMenuScene);
+    Scene_Set(&GameScene);
 }
 
 void Update(double dt) {

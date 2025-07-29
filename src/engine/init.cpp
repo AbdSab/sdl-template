@@ -4,8 +4,9 @@
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
+#include <engine/Game.h>
 
-int InitSDL(const char* title, int width, int height) {
+int InitSDL(const char* title) {
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0) {
         SDL_Log("SDL Init failed: %s", SDL_GetError());
         return 1;
@@ -32,7 +33,7 @@ int InitSDL(const char* title, int width, int height) {
         return 1;
     }
 
-    Window = InitWindow(title, width, height);
+    Window = InitWindow(title, GAME_WIDTH, GAME_HEIGHT);
     Renderer = InitRenderer(Window);
 
     return 0;

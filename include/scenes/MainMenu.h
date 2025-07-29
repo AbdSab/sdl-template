@@ -6,5 +6,6 @@
 void MainMenu_Init();
 void MainMenu_Update(float dt);
 void MainMenu_Render();
+void MainMenu_Clear();
 
 extern Scene MainMenuScene;

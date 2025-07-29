@@ -6,7 +6,8 @@
 Scene MainMenuScene = {
     .Init = MainMenu_Init,
     .Update = MainMenu_Update,
-    .Render = MainMenu_Render
+    .Render = MainMenu_Render,
+    .Clear = MainMenu_Clear,
 };
 
 void MainMenu_Init() {
@@ -21,4 +22,8 @@ void MainMenu_Update(float dt) {
 
 void MainMenu_Render() {
     RenderText(START_TEXT, 200, 200, NULL, NULL);
+}
+
+void MainMenu_Clear() {
+    
 }
