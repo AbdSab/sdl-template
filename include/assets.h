@@ -10,7 +10,7 @@
 extern SDL_Texture* textures[TOTAL_TEXTURES];
 
 bool Textures_Init();
-SDL_Texture* Textures_Load(SDL_Renderer* renderer, int index, const char* filepath);
+SDL_Texture* Textures_Load(int index, const char* filepath);
 void Textures_Clear();
 
 

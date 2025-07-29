@@ -10,6 +10,8 @@ extern InputData Input;
 void HandleKeyPress(SDL_Keycode key);
 void HandleKeyRelease(SDL_Keycode key);
 
+struct MouseData { bool right; bool left; int x; int y; };
+extern MouseData Mouse;
 
-//Text
-void DrawText(SDL_Renderer* renderer, const char* text, int x, int y, SDL_Color* color, TTF_Font* font);
+void HandleMousePress(Uint8 button);
+void HandleMouseRelease(Uint8 button);

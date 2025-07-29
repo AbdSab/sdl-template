@@ -1,13 +1,14 @@
 #include "engine/Game.h"
 #include <SDL2/SDL_events.h>
-#include "engine/common.h"
+#include "engine/input.h"
+#include "engine/renderer.h"
 #include "Scene.h"
 
-void GameStart(SDL_Renderer* renderer) {
+void GameStart() {
     bool running = true;
     SDL_Event event;
 
-    Init(renderer);
+    Init();
 
     Uint64 NOW = SDL_GetPerformanceCounter();
     Uint64 LAST = 0;
@@ -27,14 +28,21 @@ void GameStart(SDL_Renderer* renderer) {
                HandleKeyPress(event.key.keysym.sym);
             else if (event.type == SDL_KEYUP)
                HandleKeyRelease(event.key.keysym.sym);
-        }
 
-        SDL_SetRenderDrawColor(renderer, 100, 149, 237, 255);
-        SDL_RenderClear(renderer);
+            if(event.type == SDL_MOUSEBUTTONDOWN) {
+                HandleMousePress(event.button.button);
+            } else if(event.type == SDL_MOUSEBUTTONUP) {
+                HandleMouseRelease(event.button.button);
+            }
+        }
+        SDL_GetMouseState(&Mouse.x, &Mouse.y);
+
+        SDL_SetRenderDrawColor(Renderer, 100, 149, 237, 255);
+        SDL_RenderClear(Renderer);
 
         Update(deltaTime);
-        Render(renderer);
+        Render();
 
-        SDL_RenderPresent(renderer);
+        SDL_RenderPresent(Renderer);
     }
 }

@@ -1,6 +1,7 @@
 #include "assets.h"
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_image.h>
+#include <engine/renderer.h>
 
 //Images
 SDL_Texture* textures[TOTAL_TEXTURES] = { NULL };
@@ -12,7 +13,7 @@ bool Textures_Init() {
     return true;
 }
 
-SDL_Texture* Textures_Load(SDL_Renderer* renderer, int index, const char* filepath) {
+SDL_Texture* Textures_Load(int index, const char* filepath) {
     char fullpath[ASSETS_NAME_MAX_LENGTH];
 
     if (index < 0 || index >= TOTAL_TEXTURES) {
@@ -27,7 +28,7 @@ SDL_Texture* Textures_Load(SDL_Renderer* renderer, int index, const char* filepa
         return NULL;
     }
 
-    SDL_Texture* tex = SDL_CreateTextureFromSurface(renderer, surface);
+    SDL_Texture* tex = SDL_CreateTextureFromSurface(Renderer, surface);
     SDL_FreeSurface(surface);
 
     if (!tex) {

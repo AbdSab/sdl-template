@@ -1,10 +1,11 @@
 #include "engine/init.h"
+#include "engine/renderer.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
 
-int InitSDL(const char* title, int width, int height, SDL_Renderer** renderer, SDL_Window** window) {
+int InitSDL(const char* title, int width, int height) {
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0) {
         SDL_Log("SDL Init failed: %s", SDL_GetError());
         return 1;
@@ -31,8 +32,8 @@ int InitSDL(const char* title, int width, int height, SDL_Renderer** renderer, S
         return 1;
     }
 
-    *window = InitWindow(title, width, height);
-    *renderer = InitRenderer(*window);
+    Window = InitWindow(title, width, height);
+    Renderer = InitRenderer(Window);
 
     return 0;
 }
@@ -59,7 +60,7 @@ SDL_Renderer* InitRenderer(SDL_Window* window) {
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     if (!renderer) {
         SDL_Log("Renderer creation failed: %s", SDL_GetError());
-        SDL_DestroyWindow(window);
+        SDL_DestroyWindow(Window);
         TTF_Quit();
         Mix_CloseAudio();
         IMG_Quit();
@@ -70,9 +71,9 @@ SDL_Renderer* InitRenderer(SDL_Window* window) {
     return renderer;
 }
 
-void ClearSDL(SDL_Renderer* renderer, SDL_Window* window) {
-    SDL_DestroyRenderer(renderer);
-   SDL_DestroyWindow(window);
+void ClearSDL() {
+    SDL_DestroyRenderer(Renderer);
+   SDL_DestroyWindow(Window);
    TTF_Quit();
    Mix_CloseAudio();
    IMG_Quit();

@@ -3,7 +3,8 @@
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_ttf.h>
 
-#include "engine/common.h"
+#include "engine/renderer.h"
+#include "engine/input.h"
 #include "engine/init.h"
 #include "engine/Game.h"
 
@@ -14,14 +15,12 @@ const int WINDOW_HEIGHT = 600;
 
 
 int main() {
-   SDL_Window* window;
-   SDL_Renderer* renderer;
 
-   InitSDL("Game", WINDOW_WIDTH, WINDOW_HEIGHT, &renderer, &window);
+   InitSDL("Game", WINDOW_WIDTH, WINDOW_HEIGHT);
 
-   GameStart(renderer);
+   GameStart();
 
-   ClearSDL(renderer, window);
+   ClearSDL();
 
    return 0;
 }
