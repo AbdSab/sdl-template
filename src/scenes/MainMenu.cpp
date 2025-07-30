@@ -1,6 +1,6 @@
 #include "scenes/MainMenu.h"
 #include "common.h"
-#include "engine/input.h"
+#include "engine/Input.h"
 #include <scenes/GameScene.h>
 
 Scene MainMenuScene = {

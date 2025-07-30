@@ -1,9 +1,9 @@
 #include "scenes/GameScene.h"
 #include <engine/Scene.h>
 #include <common.h>
-#include <engine/renderer.h>
-#include <engine/input.h>
-#include <engine/Game.h>
+#include <engine/Renderer.h>
+#include <engine/Input.h>
+#include <engine/Engine.h>
 #include <assets.h>
 #define PI 3.14159265358979323846
 #define SIZE 32

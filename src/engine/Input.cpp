@@ -1,5 +1,4 @@
-#include "engine/input.h"
-#include <assets.h>
+#include "engine/Input.h"
 
 InputData Input = { false, false, false, false };
 

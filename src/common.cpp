@@ -1,6 +1,6 @@
 #include "common.h"
 #include <assets.h>
-#include <engine/renderer.h>
+#include <engine/Renderer.h>
 
 void RenderText(const char* text, int x, int y, SDL_Color* _color, TTF_Font* _font) {
     if (!text) return;

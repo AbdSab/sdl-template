@@ -1,7 +1,7 @@
 #include "assets.h"
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_image.h>
-#include <engine/renderer.h>
+#include <engine/Renderer.h>
 
 //Images
 SDL_Texture* textures[TOTAL_TEXTURES] = { NULL };

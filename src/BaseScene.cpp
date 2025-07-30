@@ -1,7 +1,7 @@
 #include "BaseScene.h"
 #include "assets.h"
-#include "engine/input.h"
-#include "engine/renderer.h"
+#include "engine/Input.h"
+#include "engine/Renderer.h"
 #include <common.h>
 #include <scenes/GameScene.h>
 
