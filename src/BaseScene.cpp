@@ -9,6 +9,7 @@
 void Init() {
     Fonts_Init("pixel.ttf");
     Textures_Init();
+    Audio_Init();
     Scene_Set(&GameScene);
 }
 

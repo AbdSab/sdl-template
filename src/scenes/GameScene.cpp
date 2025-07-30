@@ -11,6 +11,13 @@
 #define UNIT_T 0
 #define ENEMY_T 1
 
+#define LASER_A 0
+
+SDL_Texture* unitTexture;
+SDL_Texture* enemyTexture;
+
+Mix_Chunk* laserAudio;
+
 float lerp(float a, float b, float t) {
     return a + (b - a) * t;
 }
@@ -118,6 +125,7 @@ void UpdateEnemies(float dt) {
             enemies[i].y += dirY * move;
         }
          if (dist <= 0.1f) {
+            Mix_PlayChannel(-1, laserAudio, 0);
             enemies[i].pathIndex += 2;
             if (enemies[i].pathIndex >= 10) {
                 enemies[i].pathIndex = 10;
@@ -138,10 +146,8 @@ void RenderEnemies() {
     }
 }
 
-SDL_Texture* unitTexture;
-SDL_Texture* enemyTexture;
-
 void Game_Init() {
+    laserAudio = Audio_Load(LASER_A, "laser.wav");
     unitTexture = Textures_Load(UNIT_T, "unit.png");
     enemyTexture = Textures_Load(ENEMY_T, "enemy.png");
 

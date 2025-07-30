@@ -49,6 +49,40 @@ void Textures_Clear(void) {
     }
 }
 
+//Audio
+Mix_Chunk* audios[TOTAL_AUDIO] = { NULL };
+bool Audio_Init() {
+    for (int i = 0; i < TOTAL_AUDIO; ++i) {
+        audios[i] = NULL;
+    }
+    return true;
+}
+Mix_Chunk* Audio_Load(int index, const char* filepath) {
+    if(audios[index] == NULL) {
+        char fullpath[ASSETS_NAME_MAX_LENGTH];
+        snprintf(fullpath, sizeof(fullpath), "assets/%s", filepath);
+        audios[index] = Mix_LoadWAV(fullpath);
+
+        if (!audios[index]) {
+            SDL_Log("Mix_LoadWAV Error: %s\n", Mix_GetError());
+            Mix_Quit();
+            SDL_Quit();
+            return NULL;
+        }
+    }
+
+    return audios[index];
+}
+void Audio_Clear() {
+    for (int i = 0; i < TOTAL_AUDIO; ++i) {
+        if (audios[i]) {
+            Mix_FreeChunk(audios[i]);
+            audios[i] = NULL;
+        }
+    }
+}
+
+
 //Fonts
 TTF_Font* fonts[TOTAL_FONTS] = { NULL };
 

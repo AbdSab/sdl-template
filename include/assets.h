@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_mixer.h>
 
 #define ASSETS_NAME_MAX_LENGTH 256
 
@@ -12,6 +13,14 @@ extern SDL_Texture* textures[TOTAL_TEXTURES];
 bool Textures_Init();
 SDL_Texture* Textures_Load(int index, const char* filepath);
 void Textures_Clear();
+
+//---Audio-----
+#define TOTAL_AUDIO 32
+
+extern Mix_Chunk* audios[TOTAL_AUDIO];
+bool Audio_Init();
+Mix_Chunk* Audio_Load(int index, const char* filepath);
+void Audio_Clear();
 
 
 
